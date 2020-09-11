@@ -1,0 +1,40 @@
+﻿@model List<QandA.Data.Question>
+@{
+    ViewData["Title"] = "Home";
+}
+@section BodyStyles {
+    <style>
+        .questioninfo {
+            background-color: #FFFFFF;
+            border-top: 3px solid #ffC87C;
+            padding-left: 15px;
+            margin-bottom: 25px;
+        }
+
+
+        .blue-text {
+            color: #0000FF;
+        }
+    </style>
+}
+
+
+
+<div class="header">
+    <h5>UNANSWERED QUESTIONS</h5>
+    <a asp-controller="Home" asp-action="Ask" class="primary-button">Ask a question</a>
+</div>
+
+
+@{ foreach (var item in Model)
+    {
+        <div class="questioninfo">
+            <h3 class="blue-text">@item.Title</h3>
+            <p>@item.Description</p>
+            <div><i>Asked by @item.User.Username on <time>@item.DateCreated</time></i></div>
+        </div>
+    }
+}
+
+
+
