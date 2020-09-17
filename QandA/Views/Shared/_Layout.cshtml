@@ -53,7 +53,6 @@
             padding: 5px 10px;
             background-color: transparent;
             color: #5C5A5A;
-            webkit-text-decoration: none;
             text-decoration: none;
             cursor: pointer;
         }
@@ -82,12 +81,11 @@
             align-items: center;
             justify-content: space-between;
         }
-    
-        
     </style>
 
     @RenderSection("HeaderStyles", required: false)
-    @RenderSection("BodyStyles",required:false)
+    @RenderSection("BodyStyles", required: false)
+    @*@RenderSection("SignInStyles", required: false)*@
 </head>
 <body>
     <div class="navigation">
