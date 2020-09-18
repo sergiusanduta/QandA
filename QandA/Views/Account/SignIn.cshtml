@@ -1,33 +1,19 @@
 ﻿@model SignInModel
-@{ 
-    Layout = null;
-}
-
 @{
+    Layout = "_AuthorizationLayout";
     ViewData["Title"] = "Sign In";
 }
 
-
-<!DOCTYPE html>
-<html>
-<head>
-    <link rel="stylesheet" href="~/css/SignInStyle.css" type="text/css" />
-</head>
-
-<body>
-    <div class="signin-page">
-        <h2>Q & A</h2>
-        <form class="signin-form">
-            <label>Username</label>
-            <input type="text" asp-for="Username">
-            <br>
-            <label>Password</label>
-            <input type="text" asp-for="Password">
-            <div class="line"></div>
-            <button class="primary-button" type="submit">Sign in</button>
-            <div class="sign-up">New user? Sign Up</div>
-        </form>
-    </div>
-</body>
-
-</html>
+<div class="signin-page">
+    <h2>Q & A</h2>
+    <form class="signin-form" asp-controller="Account" asp-action="SignIn">
+        <label>Username</label>
+        <input type="text"  asp-for="Username">
+        <br>
+        <label>Password</label>
+        <input type="text" asp-for="Password">
+        <div class="line"></div>
+        <button class="primary-button" type="submit">Sign in</button>
+        <a class="sign-up" asp-controller="Account" asp-action="Register">New User? Sign Up</a>
+    </form>
+</div>

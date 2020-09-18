@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -13,18 +13,16 @@ namespace QandA.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-        private readonly QandAContext _aContext;
+        private readonly QandAContext _dbContext;
 
-        public HomeController(ILogger<HomeController> logger,QandAContext aContext )
+        public HomeController(QandAContext aContext )
         {
-            _logger = logger;
-            _aContext = aContext;
+            _dbContext = aContext;
         }
 
         public IActionResult Index()
         {
-            List<Question> questions = _aContext.Questions.Include(u => u.User).ToList();
+            List<Question> questions = _dbContext.Questions.Include(u => u.User).ToList();
             return View(questions);
         }
 
@@ -54,8 +52,8 @@ namespace QandA.Controllers
             q.Description = askQuestionModel.Content;
             q.UserId = 1;
 
-            _aContext.Questions.Add(q);
-            _aContext.SaveChanges();
+            _dbContext.Questions.Add(q);
+            _dbContext.SaveChanges();
 
             
             ModelState.Clear();
@@ -63,6 +61,7 @@ namespace QandA.Controllers
             return View();
            // return RedirectToAction("Index");
         }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
