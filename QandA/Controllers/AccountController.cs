@@ -10,6 +10,13 @@ namespace QandA.Controllers
 {
     public class AccountController : Controller
     {
+        private readonly QandAContext _dbContext;
+
+
+        public AccountController(QandAContext aContext)
+        {
+            _dbContext = aContext;
+        }
 
         public IActionResult SignOut()
         {
@@ -39,7 +46,20 @@ namespace QandA.Controllers
         [HttpPost]
         public IActionResult Register(RegisterModel user)
         {
-            
+            if (!ModelState.IsValid)
+            {
+                return View(user);
+            }
+
+            User u = new User();
+            u.Username = user.Username;
+            u.Password = user.Password;
+           
+
+            _dbContext.Users.Add(u);
+            _dbContext.SaveChanges();
+
+
             return RedirectToAction("Index", "Home");
         }
     }
