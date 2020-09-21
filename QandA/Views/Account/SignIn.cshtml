@@ -8,11 +8,12 @@
     <h2>Q & A</h2>
     <form class="signin-form" asp-controller="Account" asp-action="SignIn">
         <label>Username</label>
-        <input type="text"  asp-for="Username">
+        <input type="text" asp-for="Username">
         <br>
         <label>Password</label>
         <input type="text" asp-for="Password">
         <div class="line"></div>
+        <div asp-validation-summary="All" class="text-danger text-uppercase"></div>
         <button class="primary-button" type="submit">Sign in</button>
         <a class="sign-up" asp-controller="Account" asp-action="Register">New User? Sign Up</a>
     </form>

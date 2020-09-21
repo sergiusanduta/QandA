@@ -15,11 +15,7 @@
         <label>Confirm Password</label>
         <input type="text" asp-for="ConfirmPassword">
         <div class="line"></div>
-
-        @if (ViewBag.SuccessMessage != null)
-        {
-            <div class="alert alert-success">@ViewBag.SuccessMessage</div>
-        }
+        <div asp-validation-summary="All" class="text-danger text-uppercase"></div>
         <button class="primary-button" type="submit">Register</button>
     </form>
 </div>
